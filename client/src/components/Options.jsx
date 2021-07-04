@@ -56,7 +56,7 @@ const Options = ({ children }) =>{
                                     Copy Your ID
                                 </Button>
                             </CopyToClipboard>
-                            <Typography gutterBottom variant="h6"> Copy your ID and send to the user on other side to make a call </Typography>
+                            <Typography gutterBottom variant="h6"> Copy your ID and send to the user you want to call </Typography>
                         </Grid>
                         {/*Button to make a Call*/}
                         <Grid item xs={12} md={6} className={classes.padding}>
@@ -68,11 +68,13 @@ const Options = ({ children }) =>{
                                 <Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}> 
                                     Hang Up
                                 </Button>
+                                
                             ) : (
                                 /*if no call is going on then a button to make call */
                                 <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}> 
                                     Call
                                 </Button>
+                                
                             )}
                         </Grid>
                     </Grid>

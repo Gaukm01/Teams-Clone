@@ -56,6 +56,7 @@ const Options = ({ children }) =>{
                                     Copy Your ID
                                 </Button>
                             </CopyToClipboard>
+                            <Typography gutterBottom variant="h6"> Copy your ID and send to the user on other side to make a call </Typography>
                         </Grid>
                         {/*Button to make a Call*/}
                         <Grid item xs={12} md={6} className={classes.padding}>

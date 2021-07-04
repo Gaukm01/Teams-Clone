@@ -28,13 +28,14 @@ const VideoPlayer = () =>{
     const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } = useContext(SocketContext);
     const classes = useStyles();
     return ( 
+
         <Grid container className={classes.gridContainer}>
             {/*our own video, if stream is available then show the our video */}
             {stream && (
                 <Paper className={classes.paper}>
                     <Grid item xs={12} md={6}>
-                        <Typography variant='h5' gutterBottom>{name || "Name"}</Typography>
-                        <video playInline muted ref={myVideo} autoplay className={classes.video} />
+                        <Typography variant='h5' gutterBottom>{name || 'Name'}</Typography>
+                        <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
                     </Grid>
                 </Paper>
             )}
@@ -44,7 +45,7 @@ const VideoPlayer = () =>{
                 <Paper className={classes.paper}>
                     <Grid item xs={12} md={6}>
                         <Typography variant='h5' gutterBottom>{call.name || "Name"}</Typography>
-                        <video playInline ref={userVideo} autoplay className={classes.video} />
+                        <video playsInline ref={userVideo} autoPlay className={classes.video} />
                     </Grid>
                 </Paper>
             )}
@@ -53,6 +54,6 @@ const VideoPlayer = () =>{
         
     );
     
-}
+};
 
 export default VideoPlayer;

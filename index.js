@@ -13,7 +13,7 @@ const io = require("socket.io")(server,{
 
 app.use(cors());
 
-const PORT = process.env.PORT || 5000; // to work on localhost:5000
+const PORT = process.env.PORT || 5001; // to work on localhost:5001
 
 // to give message when server starts running
 app.get("/",(req, res) => {
@@ -26,7 +26,7 @@ io.on("connection",(socket) => {
 
     // socket.on is used to work with connection
     socket.on("disconnect", () => {
-        socket.broadcast.emit("callEnded")
+        socket.broadcast.emit("callEnded");
     });
     // to get details of user on other side of call, i.e. it's 
     socket.on("callUser",({ userToCall, signalData, from, name}) =>{
@@ -35,7 +35,7 @@ io.on("connection",(socket) => {
 
     // call accepts details
     socket.on("answerCall",(data) => {
-        io.to(data.to).emit("callAccepted",data.signal)
+        io.to(data.to).emit("callAccepted",data.signal);
     });
 });
 

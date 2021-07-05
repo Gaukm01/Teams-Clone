@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import VideoPlayer from './components/VideoPlayer';
 import Notifications from './components/Notifications';
 import Options from './components/Options';
+import Permissions from './components/Permissions';
 
 const useStyles = makeStyles((theme) =>({
     appBar: {
@@ -40,6 +41,7 @@ const App = () =>{
             </AppBar>
 
             <VideoPlayer />
+            <Permissions />
             
             <Options>
                 <Notifications />

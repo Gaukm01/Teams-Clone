@@ -21,14 +21,18 @@ const ContextProvider = ({ children }) => {
     const userVideo = useRef();
     const connectionRef = useRef();
 
+    const [audio, setAudio] = useState(false); // name
+    const [video, setVideo] = useState(false); // name
+
+    //intialization called once
     useEffect(() => {
         /* for asking video and audio permision*/
-        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-            .then((currentStream) => {
-                setStream(currentStream);
-                // getting the video stream at myVideo.
-                myVideo.current.srcObject = currentStream;
-            });
+        // navigator.mediaDevices.getUserMedia({ video, audio })
+        //     .then((currentStream) => {
+        //         setStream(currentStream);
+        //         // getting the video stream at myVideo.
+        //         myVideo.current.srcObject = currentStream;
+        //     });
         // my details
         socket.on('me', (id) => setMe(id));
         // user (person on the 2nd end of connection) details.
@@ -36,6 +40,19 @@ const ContextProvider = ({ children }) => {
             setCall({isReceivingCall:true, from, name: callerName, signal})
         });
     }, []);
+
+    useEffect(() => {
+        // UI after call ended
+        if(audio || video) {
+            navigator.mediaDevices.getUserMedia({ video, audio })
+            .then((currentStream) => {
+                setStream(currentStream);
+                // getting the video stream at myVideo.
+                console.log(audio, video)
+                myVideo.current.srcObject = currentStream;
+            });
+        }
+    }, [audio, video]); 
 
     /*different fucntions of our video call app*/
     const answerCall = () => {
@@ -90,6 +107,15 @@ const ContextProvider = ({ children }) => {
         window.location.reload();
     };
 
+    // to mute my audio
+    const enableVideo = () => {
+        setVideo(!video);
+    };
+
+    const enableAudio = () => {
+        setAudio(!audio);
+    };
+
     return (
         // return all the components including functions and const defined.
         <SocketContext.Provider value= {{
@@ -105,6 +131,8 @@ const ContextProvider = ({ children }) => {
             callUser,
             leaveCall,
             answerCall,
+            enableAudio,
+            enableVideo
         }}
         >
 

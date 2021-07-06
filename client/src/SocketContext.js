@@ -1,6 +1,7 @@
 import React, { createContext, useState, useRef, useEffect } from 'react';
 import  { io } from 'socket.io-client';
 import Peer from 'simple-peer';
+// const queryString = require('querystring');
 
 const SocketContext = createContext();
 
@@ -21,18 +22,18 @@ const ContextProvider = ({ children }) => {
     const userVideo = useRef();
     const connectionRef = useRef();
 
-    const [audio, setAudio] = useState(false); // audio stream
-    const [video, setVideo] = useState(false); // video stream
+    const [audio, setAudio] = useState(true); // audio stream
+    const [video, setVideo] = useState(true); // video stream
 
     //intialization called once
     useEffect(() => {
         /* for asking video and audio permision*/
-        // navigator.mediaDevices.getUserMedia({ video, audio })
-        //     .then((currentStream) => {
-        //         setStream(currentStream);
-        //         // getting the video stream at myVideo.
-        //         myVideo.current.srcObject = currentStream;
-        //     });
+        navigator.mediaDevices.getUserMedia({ video, audio })
+            .then((currentStream) => {
+                setStream(currentStream);
+                // getting the video stream at myVideo.
+                myVideo.current.srcObject = currentStream;
+            });
         // my details
         socket.on('me', (id) => setMe(id));
         // user (person on the 2nd end of connection) details.
@@ -43,20 +44,17 @@ const ContextProvider = ({ children }) => {
 
     useEffect(() => {
         // whenever audio, video permissions are toggled then accordingly get the permissions from browser.
-        if(audio || video) {
-            navigator.mediaDevices.getUserMedia({ video, audio })
-            .then((currentStream) => {
-                setStream(currentStream);
-                // getting the video stream at myVideo.
-                console.log(audio, video)
-                myVideo.current.srcObject = currentStream;
-            });
+
+        console.log(audio, video,'first', stream);
+        if((audio || video) && stream) {
+            const audio_track = stream.getAudioTracks();
+            console.log(audio_track.length, 'my audio track');
+            if(audio_track[0]) audio_track[0].enabled = audio;
+
+            const video_track = stream.getVideoTracks();
+            console.log(video_track.length, 'my video track');
+            if(video_track[0]) video_track[0].enabled = video;
         }
-        socket.on('me', (id) => setMe(id));
-        // user (person on the 2nd end of connection) details.
-        socket.on('callUser', ( {from, name: callerName, signal }) => {
-            setCall({isReceivingCall:true, from, name: callerName, signal})
-        });
             
     }, [audio, video]); 
 

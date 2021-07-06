@@ -21,8 +21,8 @@ const ContextProvider = ({ children }) => {
     const userVideo = useRef();
     const connectionRef = useRef();
 
-    const [audio, setAudio] = useState(false); // name
-    const [video, setVideo] = useState(false); // name
+    const [audio, setAudio] = useState(false); // audio stream
+    const [video, setVideo] = useState(false); // video stream
 
     //intialization called once
     useEffect(() => {
@@ -42,7 +42,7 @@ const ContextProvider = ({ children }) => {
     }, []);
 
     useEffect(() => {
-        // UI after call ended
+        // whenever audio, video permissions are toggled then accordingly get the permissions from browser.
         if(audio || video) {
             navigator.mediaDevices.getUserMedia({ video, audio })
             .then((currentStream) => {
@@ -52,6 +52,12 @@ const ContextProvider = ({ children }) => {
                 myVideo.current.srcObject = currentStream;
             });
         }
+        socket.on('me', (id) => setMe(id));
+        // user (person on the 2nd end of connection) details.
+        socket.on('callUser', ( {from, name: callerName, signal }) => {
+            setCall({isReceivingCall:true, from, name: callerName, signal})
+        });
+            
     }, [audio, video]); 
 
     /*different fucntions of our video call app*/
@@ -107,7 +113,7 @@ const ContextProvider = ({ children }) => {
         window.location.reload();
     };
 
-    // to mute my audio
+    // to toggle my video and audio
     const enableVideo = () => {
         setVideo(!video);
     };

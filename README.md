@@ -2,7 +2,7 @@
 ENGAGE'21 Microsoft Teams clone repository. </br>
 Work Distribution : https://docs.google.com/spreadsheets/d/1vg9WSe_C13kTNRIfP7fR_o26OiMy4Cwz0D6M5i8M46s/edit?usp=sharing.
 
-The site is hosted currently on Heroku. Website to access the app: https://video-chat-app-gk.netlify.app .
+The site is hosted currently on Heroku. Website to access the app: https://friends-corner.netlify.app .
 </br>
 ## Basic UI designs
 For my App I have thought of the following UIs.
@@ -31,4 +31,4 @@ Frontend part is kept under _**./client/src**_ folder.
 ### Backend
 Backend server is deployed on _**index.js**_ file. Here we run the backend server at PORT 5000, ten use socket function to initalize different call features. 
 ### Hosting
-I have currently hosted the App using Heroku and Netlify. Heroku is the place where the app is hosted, and netlify is used to host the frontend of the App, to get a working app accessible with the link https://video-chat-app-gk.netlify.app.
+I have currently hosted the App using Heroku and Netlify. Heroku is the place where the app is hosted, and netlify is used to host the frontend of the App, to get a working app accessible with the link https://friends-corner.netlify.app .

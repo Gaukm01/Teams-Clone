@@ -14,10 +14,10 @@ const Permissions = () =>{
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <h1>Enable Here: </h1>
                     {/* button to accept call */}
-                    <Button variant="contained" color="primary" onClick={enableAudio} audio >
+                    <Button variant="contained" color="primary" onClick={enableAudio} >
                         Audio
                     </Button>
-                    <Button variant="contained" color="primary" onClick={enableVideo} video> 
+                    <Button variant="contained" color="primary" onClick={enableVideo} > 
                         Video
                     </Button>
                 </div>

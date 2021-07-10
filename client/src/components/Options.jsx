@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Options = ({ children }) =>{
-    const { me, callAccepted, name, setName, leaveCall, callEnded, callUser } = useContext(SocketContext);
-    const [idToCall, setIdToCall] = useState('');
+    const { me, callAccepted, name, setName, leaveCall, callEnded, callUser, meetId } = useContext(SocketContext);
+    const [idToCall, setIdToCall] = useState(meetId);
     const classes = useStyles();
     return ( 
         <Container className={classes.container}>
@@ -51,9 +51,9 @@ const Options = ({ children }) =>{
                         <Grid item xs={12} md={6} className={classes.padding}>
                             <Typography gutterBottom variant="h6">Account Info </Typography>
                             <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
-                            <CopyToClipboard text={me} className={classes.margin}>
+                            <CopyToClipboard text={`https://friends-corner.netlify.app/?id=${me}`} className={classes.margin}>
                                 <Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}> 
-                                    Copy Your ID
+                                    Copy Your Link
                                 </Button>
                             </CopyToClipboard>
                             <Typography gutterBottom variant="h6"> Copy your ID and send to the user you want to call </Typography>

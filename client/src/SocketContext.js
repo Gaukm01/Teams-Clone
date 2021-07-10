@@ -1,7 +1,7 @@
 import React, { createContext, useState, useRef, useEffect } from 'react';
 import  { io } from 'socket.io-client';
 import Peer from 'simple-peer';
-// const queryString = require('querystring');
+const queryString = require('querystring');
 
 const SocketContext = createContext();
 
@@ -11,6 +11,7 @@ const socket = io('https://video-chat-app-gk.herokuapp.com/');
 //ContextProvider is the main function which returns all necessary details ( streams, ids etc.) of the connection.
 const ContextProvider = ({ children }) => {
     // intialization and [state,setState] = useState() keeps on updating returning function whenever setState is updated. 
+    const meetingSpecs = queryString.parse(window.location.search.substr(1))
     const [stream, setStream] = useState(); // get strem
     const [me, setMe] = useState(''); // my details
     const [call, setCall] = useState({}); // call details
@@ -131,6 +132,7 @@ const ContextProvider = ({ children }) => {
             stream,
             me,
             callEnded,
+            meetId: meetingSpecs['id'],
             setName,
             callUser,
             leaveCall,

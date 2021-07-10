@@ -1,13 +1,6 @@
 body {
-    background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.3), 
-      rgba(0, 0, 0, 0.3)
-    ),
-    url(https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background: rgb(215,141,219);
+    background: linear-gradient(30deg, rgba(215,141,219,1) 0%, rgba(78,166,207,1) 25%, rgba(48,172,176,1) 51%, rgba(148,236,208,1) 81%, rgba(228,238,177,1) 100%); 
 }
 
 * {

@@ -6,6 +6,7 @@ import VideoPlayer from './components/VideoPlayer';
 import Notifications from './components/Notifications';
 import Options from './components/Options';
 import Permissions from './components/Permissions';
+import ChatScreen from './components/ChatScreen';
 
 const useStyles = makeStyles((theme) =>({
     appBar: {
@@ -23,29 +24,40 @@ const useStyles = makeStyles((theme) =>({
         },
       },
       
+    main: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+    },
+
     wrapper: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: '100%',
+        width: '60%',
     },
 }))
 //Basic structure of the App. To fix the UI of webapp
 const App = () =>{
     const classes = useStyles();
     return ( 
-        <div className={classes.wrapper}>
+        <div className={classes.main}>
+            <div className={classes.wrapper}>
+                <AppBar className={classes.appBar} position="static" color="inherit">
+                    <Typography variant="h2" align="center">Video Chat</Typography>
+                </AppBar>
 
-            <AppBar className={classes.appBar} position="static" color="inherit">
-                <Typography variant="h2" align="center">Video Chat</Typography>
-            </AppBar>
-
-            <VideoPlayer />
-            <Permissions />
-            
-            <Options>
-                <Notifications />
-            </Options>
+                <VideoPlayer />
+                <Permissions />
+                
+                <Options>
+                    <Notifications />
+                </Options>
+            </div>
+            <div>
+                <ChatScreen/>
+            </div>
         </div>
     );
     

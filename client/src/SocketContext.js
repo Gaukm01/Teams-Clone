@@ -5,7 +5,7 @@ const queryString = require('querystring');
 
 const SocketContext = createContext();
 
-//const socket = io('http://localhost:5000');
+//const socket = io('http://localhost:5001');
 const socket = io('https://video-chat-app-gk.herokuapp.com/');
 
 //ContextProvider is the main function which returns all necessary details ( streams, ids etc.) of the connection.
@@ -22,6 +22,7 @@ const ContextProvider = ({ children }) => {
     const myVideo = useRef(); 
     const userVideo = useRef();
     const connectionRef = useRef();
+    const messageRef = useRef();
 
     const [audio, setAudio] = useState(true); // audio stream
     const [video, setVideo] = useState(true); // video stream
@@ -59,7 +60,45 @@ const ContextProvider = ({ children }) => {
             
     }, [audio, video]); 
 
-    /*different fucntions of our video call app*/
+    
+    const sendMessage = (message) => {
+        // if call acepted
+        console.log(message,'sdfdf')
+        // make a new webRTC peer connection.
+        const peer = new Peer({ initiator:false, trickle: false });
+
+        peer.on('signal', (data) =>{
+            //get caller details
+            socket.emit('sendMessage', {signal:data, to: call.from, message });
+        })
+
+        peer.signal(call.signal);
+
+        messageRef.current = peer; // to use peer for connection
+    };
+
+
+    const recieveMessage = (setMessageRecieved) => {
+        // if call acepted
+
+        // make a new webRTC peer connection.
+        // const peer = new Peer({ initiator:false, trickle: false });
+
+        // peer.on('signal', (data) =>{
+        //     //get caller details
+        //     console.log('got it', data)
+        // })
+
+        socket.on('recievedText', (signal) => {
+            // peer.signal(signal.signal);
+            console.log('recccc', signal.message)
+            setMessageRecieved(JSON.parse(signal.message))
+        });
+
+        // messageRef.current = peer; // to use peer for connection
+    };
+
+
     const answerCall = () => {
         // if call acepted
         setCallAccepted(true);
@@ -108,6 +147,7 @@ const ContextProvider = ({ children }) => {
         setCallEnded(true);
 
         connectionRef.current.destroy();
+        messageRef.current.destroy();
 
         window.location.reload();
     };
@@ -138,7 +178,9 @@ const ContextProvider = ({ children }) => {
             leaveCall,
             answerCall,
             enableAudio,
-            enableVideo
+            enableVideo,
+            sendMessage,
+            recieveMessage
         }}
         >
 

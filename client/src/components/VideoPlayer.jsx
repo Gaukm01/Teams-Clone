@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     paper: {
-      padding: '10px',
+      padding: '2px',
       border: '2px solid black',
-      margin: '10px',
+      //margin: '10px',
     },
 }));  
 
@@ -32,9 +32,9 @@ const VideoPlayer = () =>{
         <Grid container className={classes.gridContainer}>
             {/*our own video, if stream is available then show the our video */}
             {stream && (
-                <Paper className={classes.paper}>
+                <Paper className={classes.paper} style={{backgroundColor: 'inherit'}}>
                     <Grid item xs={12} md={6}>
-                        <Typography variant='h5' gutterBottom>{name || 'Name'}</Typography>
+                        <Typography variant='h5'style={{'position': 'absolute'}} gutterBottom>{name || 'Name'}</Typography>
                         <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
                     </Grid>
                 </Paper>
@@ -42,9 +42,9 @@ const VideoPlayer = () =>{
             
             {/*User's video , if call is Accepted and not ended show user video*/}
             {callAccepted && !callEnded && (
-                <Paper className={classes.paper}>
+                <Paper className={classes.paper} style={{backgroundColor: 'inherit'}}>
                     <Grid item xs={12} md={6}>
-                        <Typography variant='h5' gutterBottom>{call.name || "Name"}</Typography>
+                        <Typography variant='h5' style={{'position': 'absolute'}} gutterBottom>{call.name || "Name"}</Typography>
                         <video playsInline ref={userVideo} autoPlay className={classes.video} />
                     </Grid>
                 </Paper>

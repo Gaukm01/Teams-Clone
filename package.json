@@ -23,10 +23,13 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
+    "particles": "^0.3.1",
+    "react": "^17.0.2",
     "react-copy-to-clipboard": "^5.0.3",
     "react-particles-js": "^3.5.3",
     "simple-peer": "^9.11.0",
     "socket.io": "^4.1.2",
-    "socket.io-client": "^4.1.2"
+    "socket.io-client": "^4.1.2",
+    "tsparticles": "^1.31.1"
   }
 }

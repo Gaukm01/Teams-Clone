@@ -9,6 +9,9 @@ import Permissions from './components/Permissions';
 import ChatScreen from './components/ChatScreen';
 
 const useStyles = makeStyles((theme) =>({
+    root: {
+        backgroundColor: 'inherit'
+    },
     appBar: {
         borderRadius: 15,
         margin: '30px 100px',
@@ -17,7 +20,8 @@ const useStyles = makeStyles((theme) =>({
         justifyContent: 'center',
         alignItems: 'center',
         width: '600px',
-        border: '2px solid black',
+        // border: '2px solid black',
+        backgroundColor: 'inherit',
     
         [theme.breakpoints.down('xs')]: {
           width: '90%',
@@ -29,23 +33,25 @@ const useStyles = makeStyles((theme) =>({
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
+        backgroundColor: 'inherit',
     },
 
     wrapper: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        width: '60%',
+        width: '80%',
+        backgroundColor: 'inherit',
     },
 }))
 //Basic structure of the App. To fix the UI of webapp
 const App = () =>{
     const classes = useStyles();
     return ( 
-        <div className={classes.main}>
+        <div className={classes.main} >
             <div className={classes.wrapper}>
-                <AppBar className={classes.appBar} position="static" color="inherit">
-                    <Typography variant="h2" align="center">Video Chat</Typography>
+                <AppBar className={classes.appBar}  position="static" color="inherit" >
+                    <Typography variant="h2" align="center">Friends Corner</Typography>
                 </AppBar>
 
                 <VideoPlayer />

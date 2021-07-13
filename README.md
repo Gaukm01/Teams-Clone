@@ -65,8 +65,8 @@ Backend server is deployed on _**``index.js``**_ file. Here we run the backend s
 I have currently hosted the App's on Heroku. And the app is published on Netlify to get a working app accessible over internet with the link https://friends-corner.netlify.app to allow participants to have a video call with each other.
 
 ## Features Added
-**1v1 Audio Video Call ** </br>
-**Audio & Video Toggle Button before and during call ** </br>
+**1v1 Audio Video Call** </br>
+**Audio & Video Toggle Button before and during call** </br>
 **Link Generator** to be shared for calling </br>
 **Watsapp Share button** to share the link</br>
 **Notification Sound** </br>

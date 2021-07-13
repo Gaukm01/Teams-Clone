@@ -65,7 +65,7 @@ const Options = ({ children }) =>{
                                       </Button>
                                   </CopyToClipboard>
                                   <Button style={{ marginTop: 'auto', marginLeft: '15px'}} variant="contained" color="primary" fullWidth title={'Share the link on WhatsApp'} startIcon={<WhatsApp fontSize="large" />} onClick={() => {
-                                    window.location.href = `https://wa.me/?text=${encodeURI(`Please Join this link to start the call: https://friends-corner.netlify.app/?id=${me}`)}`
+                                    window.open (`https://wa.me/?text=${encodeURI(`Please Join this link to start the call: https://friends-corner.netlify.app/?id=${me}`)}`)
                                   } }> 
                                           Share On WhatsApp
                                       </Button>

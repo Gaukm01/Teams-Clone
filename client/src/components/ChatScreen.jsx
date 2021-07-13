@@ -48,6 +48,7 @@ const ChatScreen = () => {
            flag = false;
         }
       }
+      // for removing repetetion of same message in chat box.
       if (flag) setMessageList([...messageList, {...messageRecieved, direction: 'incoming'}])    
     }
   }, [messageRecieved])
@@ -55,6 +56,7 @@ const ChatScreen = () => {
   return (
 
     <>
+    {/* chatbox */}
       { callAccepted && 
         <div style={{ position: "relative", height: "500px" }}>
           <MainContainer>

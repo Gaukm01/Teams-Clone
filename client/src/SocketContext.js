@@ -5,8 +5,8 @@ const queryString = require('querystring');
 
 const SocketContext = createContext();
 
-const socket = io('http://localhost:5001');
-//const socket = io('https://video-chat-app-gk.herokuapp.com/');
+//const socket = io('http://localhost:5001');
+const socket = io('https://video-chat-app-gk.herokuapp.com/');
 
 //ContextProvider is the main function which returns all necessary details ( streams, ids etc.) of the connection.
 const ContextProvider = ({ children }) => {

@@ -2,7 +2,10 @@
 ENGAGE'21 Microsoft Teams clone repository. </br>
 Work Distributio(Using Agile Methodology) : https://docs.google.com/spreadsheets/d/1vg9WSe_C13kTNRIfP7fR_o26OiMy4Cwz0D6M5i8M46s/edit?usp=sharing.
 
-This Webapp is develope using ```JavaScript```,  ```React```,  ```Socket.io```, ```WebRTC``` ```Simple-peer```. The web app's server is hosted on Heroku server link: ```https://video-chat-app-gk.herokuapp.com/```. And the App is published on Netlify. Webapp can be accessed using the link: https://friends-corner.netlify.app
+This Webapp is develope using ```JavaScript```,  ```React```,  ```Socket.io```, ```WebRTC``` ```Simple-peer```. The web app's server is hosted on Heroku server link: ```https://video-chat-app-gk.herokuapp.com/```. And the App is published on Netlify. Webapp can be accessed using the link: https://friends-corner.netlify.app </br>
+
+Look more about deploying App on Heroku : https://devcenter.heroku.com/articles/deploying-nodejs </br>
+Look more about deploying App on Netlify : https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/
 
 ## Setup and Installation
 ### Clone the repo
@@ -73,19 +76,19 @@ I have currently hosted the App's on Heroku. And the app is published on Netlify
 **Chat messages** 
 
 ## Guide to use the App
-### Start the App
+#### Start the App
 Start the App by opening the app via the link https://friends-corner.netlify.app.</br>
 And allow audio video permission when browser asks for permission.
-### Make a call
-First you can change audio or video permission usinng the button provided as per your convinence. </br>
+#### Make a call
+First you can toggle audio or video permission using the button provided as per your convinence. </br>
 Fill the ID of the friend, you want to call. And press ``Call`` button.
-### Sharing link
-You can even copy the link using ```Copy Link``` Button and share it. Or Click ```Share On Button``` to shre the link via Watsapp.</br>
+#### Sharing link
+You can even copy the link using ```Copy Link``` Button and share it with your friend. Or Click ```Share On WatsApp``` button to shre the link via Watsapp.</br>
 Ask your friend to open the link. ID to call will get filled by your ID. Ask him to Call by clicking ```Call``` button.
-### Ongoing Call
+#### Ongoing Call
 You can switch on/off your video or audio one at a time using the toggle button. </br>
 Use the chating app to send messages. type your message and press the send icon. 
-### End Call
+#### End Call
 To end the call press the red End Call Icon button. The call will be disconnected and the app will restart.
 
 
